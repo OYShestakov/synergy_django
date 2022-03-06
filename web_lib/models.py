@@ -60,9 +60,17 @@ class ExtUser(models.Model):
 
 class Product(models.Model):
 
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+
     name = models.CharField(max_length=200, verbose_name='Название товара')
 
 class Store(models.Model):
+
+    class Meta:
+        verbose_name = 'Магазин'
+        verbose_name_plural = 'Магазины'
 
     name = models.CharField(max_length=200, verbose_name='Название магазина')
     products = models.ManyToManyField(Product, related_name='stores')
