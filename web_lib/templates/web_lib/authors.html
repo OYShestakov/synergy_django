@@ -1,0 +1,17 @@
+{% extends 'web_lib/main.html' %}
+
+{% block content %}
+    <h1>Authors</h1>
+    <div>
+      {% if authors %}
+          {% for author in authors %}
+              <p>Name: {{author.name}}</p>
+              <p>Age: {{author.age}}</p>
+              <p>Email: {{author.email}}</p>
+              <hr>
+          {% endfor %}
+      {% else %}
+        <p>No authors</p>
+      {% endif %}
+    </div>
+{% endblock %}
