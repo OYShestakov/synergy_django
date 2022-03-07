@@ -1,18 +1,32 @@
 {% extends 'web_lib/main.html' %}
 
 {% block content %}
-    <h1>Books</h1>
-    <div class="books_style">
+
+    <div class="container">
+        <h1>Books</h1>
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Page_count</th>
+      <th scope="col">Published</th>
+    </tr>
+  </thead>
+  <tbody>
       {% if books %}
           {% for book in books %}
-              <p>Name: {{book.title}}</p>
-              <p>description: {{book.description}}</p>
-              <p>Page count: {{book.page_count}}</p>
-              <p>Publications: {{book.published|date:"M-d-Y"}}</p>
-        <hr>
+            <tr>
+                  <th scope="row">{{book.title}}</th>
+                  <td>{{book.description}}</td>
+                  <td>{{book.page_count}}</td>
+                  <td>{{book.published|date:"M-d-Y"}}</td>
+            </tr>
           {% endfor %}
       {% else %}
         <p>No books</p>
       {% endif %}
+    </tbody>
+</table>
     </div>
 {% endblock %}
