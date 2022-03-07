@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect
 from web_lib.models import Author, Book
-from web_lib.forms import SearchAuthor, PostAuthor
+from .forms import SearchAuthor, PostAuthor, BookForm
+from django.forms import modelform_factory
 
 def main(request):
-    # if request.method == 'GET':
-    form = SearchAuthor(request.GET)
-    form_post = PostAuthor(request.POST)
-    return render(request, 'web_lib/main.html', {'form': form, 'form_post':form_post})
-    # return render(request, 'web_lib/main.html')
 
-# def form_search(request):
-#     if request.method == 'GET':
-#         form = SearchAuthor(request.GET)
-#         return render(request, 'web_lib/main.html', {'form': form})
+    book_form = BookForm()
+    if request.method == 'POST':
+        book_form = BookForm(request.POST)
+        if book_form.is_valid():
+            book_form.save()
+            return redirect('web_lib/books.html')
+    return render(request, "web_lib/book_form.html", {'form': book_form})
+
+    # form = SearchAuthor(request.GET)
+    # form_post = PostAuthor(request.POST)
+    # return render(request, 'web_lib/main.html', {'form': form, 'form_post':form_post})
+
 
 def authors(request):
     if "author_uuid" in request.GET:
@@ -25,6 +29,10 @@ def authors(request):
         Author.objects.create(**data)
     all_authors ={'authors': Author.objects.all()}
     return render(request, 'web_lib/authors.html', all_authors )
+
+def create_book(request):
+    book_form = BookForm()
+    return render(request, 'web_lib/book_form.html', {'form': book_form})
 
 def author_id(request, pk):
     author = Author.objects.get(pk=pk)

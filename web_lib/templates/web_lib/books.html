@@ -4,6 +4,7 @@
 
     <div class="container">
         <h1>Books</h1>
+        <a class="btn btn-sn btn-info"  href="{% url 'create_book' %}">Создать книгу</a>
         <table class="table table-striped">
   <thead>
     <tr>
@@ -28,5 +29,6 @@
       {% endif %}
     </tbody>
 </table>
+
     </div>
 {% endblock %}
