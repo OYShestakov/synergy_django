@@ -1,0 +1,38 @@
+[
+  {
+    "model": "web_lib.Author",
+    "pk": "123e4567-e89b-12d3-a456-426655440000",
+    "fields": {
+      "name": "Nem",
+      "age": 25,
+      "email": "djjd@ndsf.com",
+      "lit_type": "b"
+    }
+  },
+
+  {
+    "model": "web_lib.Book",
+    "pk": "8",
+    "fields": {
+      "title": "book_08",
+      "description": "dsjdskfgdf",
+      "page_count": "300",
+      "published": "2022-03-06 15:10:24.028805+00:00",
+      "author": "123e4567-e89b-12d3-a456-426655440000"
+    }
+
+  },
+
+  {
+    "model": "web_lib.Book",
+    "pk": "9",
+    "fields": {
+      "title": "book_09",
+      "description": "dsjdskfgdf89789",
+      "page_count": "500",
+      "published": "2022-03-06 15:10:24.028805+00:00",
+      "author": "123e4567-e89b-12d3-a456-426655440000"
+    }
+
+  }
+]
