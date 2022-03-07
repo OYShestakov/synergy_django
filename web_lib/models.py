@@ -22,13 +22,18 @@ class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(
         max_length=200,
-        verbose_name='Имя',
+        verbose_name='Имя автора',
         validators=[validators.RegexValidator(regex='^.*em$', message='Wrong')]
     )
     age = models.PositiveIntegerField(verbose_name='Возраст автора')
     email = models.EmailField(verbose_name='Почта автора')
     lit_type = models.CharField(max_length=200, verbose_name='Тип литературы', choices=TYPES_LIT, default='a')
 
+    def info(self):
+        name = ('Name: %s' % self.name)
+        age = ('Age: %s' % self.age)
+        lit_type = ('Type: %s' % self.lit_type)
+        return [name, age, lit_type]
 
     def __str__(self):
         return self.name
